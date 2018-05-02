@@ -1,0 +1,25 @@
+{
+  "name": "tennis",
+  "version": "1.0.0",
+  "description": "This Kata is about implementing a simple tennis game. I came up with it while thinking about Wii tennis, where they have simplified tennis, so each set is one game.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "mocha src/**spec.js",
+    "test:watch": "mocha src --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbstnbr/kata-tennis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbstnbr/kata-tennis/issues"
+  },
+  "homepage": "https://github.com/sbstnbr/kata-tennis#readme",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}
