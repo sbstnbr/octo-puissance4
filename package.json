@@ -20,6 +20,7 @@
   "homepage": "https://github.com/sbstnbr/kata-tennis#readme",
   "devDependencies": {
     "chai": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "sinon": "^5.0.3"
   }
 }

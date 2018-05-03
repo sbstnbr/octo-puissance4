@@ -33,6 +33,14 @@ class Grid {
   isFull(){
     return !this.tokens.some(column => column.indexOf(0)!==-1);
   }
+  getTokenRaw(raw){
+    if (!raw.toString().match('[0-6]')) return false;
+    else {
+      const tokenRaw = [];
+      this.tokens.forEach(column => tokenRaw.push(column[raw]))
+      return tokenRaw;
+    };
+  }
 }
 
 module.exports = Grid;

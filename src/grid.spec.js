@@ -57,4 +57,12 @@ describe('Grid', () => {
       expect(grid.isFull()).to.be.true;
     });
   });
+  describe('getTokenRaw', () => {
+    it('should return false if the raw is not between bounds', () => {
+      expect(grid.getTokenRaw('A')).to.be.false;
+    });
+    it('should return a raw of the token', () => {
+      expect(grid.getTokenRaw(4)).to.deep.equal(new Array(7).fill(0));
+    });
+  });
 });
