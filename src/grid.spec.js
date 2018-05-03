@@ -28,7 +28,7 @@ describe('Grid', () => {
     });
 
     it('it should return false if the colomn is full', () => {
-      grid.tokens[6][5]=1;
+      grid.tokens[6].fill(1);
       expect(grid.checkIfMoveIsAllowed(6)).to.be.false;
     });
   });

@@ -9,18 +9,16 @@ class Grid {
   }
   initTokens(numRows, numColumns) {
     let array = new Array(numColumns); 
-   
     for(let i = 0; i < numColumns; i++) {
       array[i] = new Array(numRows).fill(0); 
     }
-   
     return array; 
   }
   checkIfMoveIsAllowed(column){
     return (
       column >= 0
       && column < this.numColumns
-      && this.tokens[column][this.numRows-1]===0
+      && this.tokens[column].indexOf(0)!==-1
       ? true : false
     )
   }
