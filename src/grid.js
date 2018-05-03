@@ -23,7 +23,7 @@ class Grid {
     )
   }
   addToken(column, player){
-    if (!checkIfMoveIsAllowed(column)) return false;
+    if (!this.checkIfMoveIsAllowed(column)) return false;
     else {
       const raw = this.tokens[column].indexOf(0);
       this.tokens[column][raw] = player;
