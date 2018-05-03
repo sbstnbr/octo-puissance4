@@ -4,7 +4,7 @@ var Grid = require('./grid');
 describe('Grid', () => {
   let grid;
   beforeEach(() =>{
-    grid = new Grid();
+    grid = new Grid(6,7);
   });
   it('should init a Grid object', () => {
     expect(grid).to.be.an.instanceOf(Object);

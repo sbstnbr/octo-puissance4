@@ -1,7 +1,7 @@
 class Grid {
-  constructor(){
-    this.numRows = 6;
-    this.numColumns = 7;
+  constructor(numRows,numColumns){
+    this.numRows = numRows;
+    this.numColumns = numColumns;
     this.tokens = this.initTokens(this.numRows, this.numColumns);
   }
   render(){
