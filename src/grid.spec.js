@@ -28,7 +28,7 @@ describe('Grid', () => {
     });
 
     it('it should return false if the colomn is full', () => {
-      grid.tokens[6].fill(1);
+      grid.tokens[6][5]=1;
       expect(grid.checkIfMoveIsAllowed(6)).to.be.false;
     });
   });
@@ -38,11 +38,23 @@ describe('Grid', () => {
     });
     it('should add a 2 token', () => {
       grid.addToken(0,2);
-      // console.log(grid);
-      expect(grid.tokens[0][grid.numRows-2]).to.equal(2);
+      expect(grid.tokens[0][0]).to.equal(2);
     });
-    // it('it should add a token on top of the existing tokens of the column if a token is added', () => {
-    //   expect(grid[][]).to.equal(1);
-    // });
-  })
+    it('it should add a token on top of the existing tokens of the column if a token is added', () => {
+      grid.tokens[1][0]=1;
+      grid.addToken(1,1);
+      expect(grid.tokens[1][1]).to.equal(1);
+    });
+  });
+  describe('isFull', () => {
+    it('should return false if the grid is not full', () => {
+      expect(grid.isFull()).to.be.false;
+    });
+    it('should return true if the grid is full', () => {
+      grid.tokens.forEach(element => {
+        element.fill(1);
+      });
+      expect(grid.isFull()).to.be.true;
+    });
+  });
 });

@@ -20,25 +20,20 @@ class Grid {
     return (
       column >= 0
       && column < this.numColumns
-      && this.tokens[column][0]===0
+      && this.tokens[column][this.numRows-1]===0
       ? true : false
     )
   }
   addToken(column, player){
-    // Check the last token set in the column provided
-    const emptyRawInColumn = -1;
-    // for (let index = 0; index < this.tokens.numRows; index++) {
-    //   // From botom
-    //   const row = this.tokens[this.tokens.numRows-1-index];
-    //   if(row[column]===0){
-    //     emptyRawInColumn = this.tokens.numRows-1-index;
-    //     // Fill token
-    //     row[column]=player;
-    //     return true;
-    //   }
-    // }
-    this.tokens[0][this.numRows-2]=2;
-    return true;
+    if (!checkIfMoveIsAllowed(column)) return false;
+    else {
+      const raw = this.tokens[column].indexOf(0);
+      this.tokens[column][raw] = player;
+      return true;
+    }
+  }
+  isFull(){
+    return !this.tokens.some(column => column.indexOf(0)!==-1);
   }
 }
 
