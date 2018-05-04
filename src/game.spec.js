@@ -26,7 +26,11 @@ describe('Game', () => {
       expect(game.didThePlayerWin(2,0,0)).to.be.true;
     });
     it('should return true if 4 tokens of the same player are aligned horizontally', () => {
-      sinon.stub(game.grid, 'getTokenRaw').returns(new Array(7).fill(1));
+      sinon.stub(game.grid, 'getTokenRow').returns(new Array(7).fill(1));
+      expect(game.didThePlayerWin(1,0,0)).to.be.true;
+    });
+    it.skip('should return true if 4 tokens of the same player are aligned diagonally', () => {
+      sinon.stub(game.grid, 'getTokenRow').returns(new Array(7).fill(1));
       expect(game.didThePlayerWin(1,0,0)).to.be.true;
     });
   });

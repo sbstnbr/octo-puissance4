@@ -57,12 +57,35 @@ describe('Grid', () => {
       expect(grid.isFull()).to.be.true;
     });
   });
-  describe('getTokenRaw', () => {
-    it('should return false if the raw is not between bounds', () => {
-      expect(grid.getTokenRaw('A')).to.be.false;
+  describe('getTokenRow', () => {
+    it('should return false if the row is not between bounds', () => {
+      expect(grid.getTokenRow('A')).to.be.false;
     });
-    it('should return a raw of the token', () => {
-      expect(grid.getTokenRaw(4)).to.deep.equal(new Array(7).fill(0));
+    it('should return a row of the token', () => {
+      expect(grid.getTokenRow(4)).to.deep.equal(new Array(7).fill(0));
+    });
+  });
+  describe('getTokenDiagonals', () => {
+    it('should return false if the token is not in the grid', () => {
+      expect(grid.getTokenDiagonals('A',10)).to.be.false;
+    });
+    it('should return a unique 6 token diagonal if the token is in the SW corner of the grid', () => {
+      expect(grid.getTokenDiagonals(0,0)).to.deep.equal([new Array(6).fill(0), [0]]);
+    });
+    it('should return a unique 6 token diagonal if the token is in the NW corner of the grid', () => {
+      expect(grid.getTokenDiagonals(5,0)).to.deep.equal([[0], new Array(6).fill(0)]);
+    });
+    it('should return a unique 6 token diagonal if the token is in the NE corner of the grid', () => {
+      expect(grid.getTokenDiagonals(5,6)).to.deep.equal([new Array(6).fill(0), [0]]);
+    });
+    it('should return a unique 6 token diagonal if the token is in the SE corner of the grid', () => {
+      expect(grid.getTokenDiagonals(5,0)).to.deep.equal([[0], new Array(6).fill(0)]);
+    });
+    it('should return 2 small token diagonals if the token is in the border of the grid', () => {
+      expect(grid.getTokenDiagonals(3,0)).to.deep.equal([[0,0,0], [0,0,0,0]]);
+    });
+    it('should return 2 diagonals if the token is in the grid', () => {
+      expect(grid.getTokenDiagonals(3,5)).to.deep.equal([[0,0,0,0,0], [0,0,0,0]]);
     });
   });
 });

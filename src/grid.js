@@ -25,21 +25,45 @@ class Grid {
   addToken(column, player){
     if (!this.checkIfMoveIsAllowed(column)) return false;
     else {
-      const raw = this.tokens[column].indexOf(0);
-      this.tokens[column][raw] = player;
-      return [raw,column];
+      const row = this.tokens[column].indexOf(0);
+      this.tokens[column][row] = player;
+      return [row,column];
     }
   }
   isFull(){
     return !this.tokens.some(column => column.indexOf(0)!==-1);
   }
-  getTokenRaw(raw){
-    if (!raw.toString().match('[0-6]')) return false;
+  getTokenRow(row){
+    if (!row.toString().match('[0-6]')) return false;
     else {
-      const tokenRaw = [];
-      this.tokens.forEach(column => tokenRaw.push(column[raw]))
-      return tokenRaw;
+      const tokenRow = [];
+      this.tokens.forEach(column => tokenRow.push(column[row]))
+      return tokenRow;
     };
+  }
+  getTokenDiagonals(row,column){
+    try {
+      const token = this.tokens[column][row];
+      let diagonals = [[],[]];
+      // Diagonal 1: y = x + gradient1
+      const gradient1 = row - column;
+      for (let index = 0; index < this.numColumns; index++) {
+        if(index+gradient1<this.numRows && index+gradient1>=0){
+          diagonals[0].push(this.tokens[index][index+gradient1]);
+        }
+      }
+      // Diagonal 2
+      const gradient2 = row + column;
+      for (let index = 0; index < this.numColumns; index++) {
+        if(-index+gradient2<this.numRows && -index+gradient2>=0){
+          diagonals[1].push(this.tokens[index][-index+gradient2]);
+        }
+      }
+      return diagonals;
+    } 
+    catch (err){
+      return false;
+    }
   }
 }
 
