@@ -27,7 +27,7 @@ class Grid {
     else {
       const raw = this.tokens[column].indexOf(0);
       this.tokens[column][raw] = player;
-      return true;
+      return [raw,column];
     }
   }
   isFull(){

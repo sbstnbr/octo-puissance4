@@ -33,8 +33,8 @@ describe('Grid', () => {
     });
   });
   describe('addToken', () => {
-    it('should return true if a token is correctly added', () => {
-      expect(grid.addToken(0,1)).to.be.true;
+    it('should return the coordinates of the token if it is correctly added', () => {
+      expect(grid.addToken(0,1)).to.deep.equal([0,0]);
     });
     it('should add a 2 token', () => {
       grid.addToken(0,2);

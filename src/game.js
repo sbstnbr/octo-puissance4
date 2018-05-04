@@ -25,7 +25,6 @@ class Game {
         break;
       }
     }
-    
     return (vertical || horizontal);
   }
 }
