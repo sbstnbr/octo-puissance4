@@ -6,25 +6,13 @@ class Game {
     this.nextPlayer = Math.floor(Math.random()*2+1);
     this.winner = null;
   }
-  isThereAWinner(){
+  didThePlayerWin(player,rawPlayed,columnPlayed){
+    // Define winning string: 1111 or 2222
+    const playerWinningString = player.toString()+player.toString()+player.toString()+player.toString();
     // Vertical
-    const vertical = this.grid.tokens.some(column => {
-      return (
-        column.join('').indexOf('1111') !== -1
-        || column.join('').indexOf('2222') !== -1
-      )
-    });
+    let vertical = this.grid.tokens[columnPlayed].join('').indexOf(playerWinningString) !== -1;
     // Horizontal
-    let horizontal = false;
-    for (let index = 0; index < this.grid.numRows; index++) {
-      if (
-        this.grid.getTokenRaw(index).join('').indexOf('2222') !== -1
-        || this.grid.getTokenRaw(index).join('').indexOf('1111') !== -1
-      ){
-        horizontal = true;
-        break;
-      }
-    }
+    let horizontal = this.grid.getTokenRaw(rawPlayed).join('').indexOf(playerWinningString) !== -1
     return (vertical || horizontal);
   }
 }
