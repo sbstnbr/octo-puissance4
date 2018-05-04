@@ -7,14 +7,26 @@ class Game {
     this.winner = null;
   }
   isThereAWinner(){
-    const horizontal = this.grid.tokens.some(column => {
+    // Vertical
+    const vertical = this.grid.tokens.some(column => {
       return (
         column.join('').indexOf('1111') !== -1
         || column.join('').indexOf('2222') !== -1
       )
     });
-    const vertical = this.grid.tokens[3][2] === 2
-    return (horizontal || vertical);
+    // Horizontal
+    let horizontal = false;
+    for (let index = 0; index < this.grid.numRows; index++) {
+      if (
+        this.grid.getTokenRaw(index).join('').indexOf('2222') !== -1
+        || this.grid.getTokenRaw(index).join('').indexOf('1111') !== -1
+      ){
+        horizontal = true;
+        break;
+      }
+    }
+    
+    return (vertical || horizontal);
   }
 }
 

@@ -8,16 +8,8 @@
     "test": "mocha src/**spec.js",
     "test:watch": "mocha src --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sbstnbr/kata-tennis.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sbstnbr/kata-tennis/issues"
-  },
-  "homepage": "https://github.com/sbstnbr/kata-tennis#readme",
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
