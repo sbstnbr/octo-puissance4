@@ -31,7 +31,7 @@ describe('Game', () => {
     });
     it('should return true if 4 tokens of the same player are aligned diagonally', () => {
       sinon.stub(game.grid, 'getTokenDiagonals').returns([
-        [0,1,1,1,0],
+        [0,2,1,2,0],
         [1,1,1,1],
       ]);
       expect(game.didThePlayerWin(1,3,5)).to.be.true;
