@@ -13,7 +13,11 @@ class Game {
     let vertical = this.grid.tokens[columnPlayed].join('').indexOf(playerWinningString) !== -1;
     // Horizontal
     let horizontal = this.grid.getTokenRow(rowPlayed).join('').indexOf(playerWinningString) !== -1
-    return (vertical || horizontal);
+    // Diagonals
+    let diagonals = this.grid.getTokenDiagonals(rowPlayed,columnPlayed).some(diagonal => {
+      return diagonal.join('').indexOf(playerWinningString) !== -1
+    });
+    return vertical || horizontal || diagonals;
   }
 }
 

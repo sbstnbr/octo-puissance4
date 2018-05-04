@@ -29,9 +29,12 @@ describe('Game', () => {
       sinon.stub(game.grid, 'getTokenRow').returns(new Array(7).fill(1));
       expect(game.didThePlayerWin(1,0,0)).to.be.true;
     });
-    it.skip('should return true if 4 tokens of the same player are aligned diagonally', () => {
-      sinon.stub(game.grid, 'getTokenRow').returns(new Array(7).fill(1));
-      expect(game.didThePlayerWin(1,0,0)).to.be.true;
+    it('should return true if 4 tokens of the same player are aligned diagonally', () => {
+      sinon.stub(game.grid, 'getTokenDiagonals').returns([
+        [0,1,1,1,0],
+        [1,1,1,1],
+      ]);
+      expect(game.didThePlayerWin(1,3,5)).to.be.true;
     });
   });
 });
