@@ -1,5 +1,6 @@
 var expect = require('chai').expect;
 var Game = require('./game');
+var Grid = require('./grid');
 var sinon = require('sinon');
 
 describe('Game', () => {
@@ -25,10 +26,7 @@ describe('Game', () => {
       expect(game.isThereAWinner()).to.be.true;
     });
     it('should return true if 4 tokens of the same player are aligned horizontally', () => {
-      game.grid.tokens[3][2] = 2;
-      game.grid.tokens[4][2] = 2;
-      game.grid.tokens[5][2] = 2;
-      game.grid.tokens[6][2] = 2;
+      sinon.stub(game.grid, 'getTokenRaw').returns(new Array(7).fill(1));
       game.grid.render();
       expect(game.isThereAWinner()).to.be.true;
     });
